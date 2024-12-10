@@ -5,6 +5,7 @@ import { CustomError } from '../utils/response/custom-error/CustomError';
 
 export const checkRole = (roles: Role[], isSelfAllowed = false) => {
   return async (req: Request, res: Response, next: NextFunction) => {
+    console.log("Checking role.");
     const { id, role } = req.jwtPayload;
     const { id: requestId } = req.params;
 

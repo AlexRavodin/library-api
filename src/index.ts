@@ -8,6 +8,7 @@ import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
 
 import './utils/response/customSuccess';
 import { errorHandler } from './middleware/errorHandler';
@@ -16,6 +17,7 @@ import { dbCreateConnection } from './orm/dbCreateConnection';
 import routes from './routes';
 
 export const app = express();
+app.use(cookieParser());
 app.use(cors());
 app.use(helmet());
 app.use(bodyParser.json());
