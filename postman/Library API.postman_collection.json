@@ -93,7 +93,7 @@
 								}
 							]
 						},
-						"url": "{{baseUrl}}/register"
+						"url": "{{baseUrl}}/auth/register"
 					},
 					"response": []
 				},
@@ -138,7 +138,56 @@
 								}
 							]
 						},
-						"url": "{{baseUrl}}/change-password"
+						"url": "{{baseUrl}}/auth/change-password"
+					},
+					"response": []
+				},
+				{
+					"name": "/logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"token\", jsonData.data);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "{{language}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin@admin.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "pass1",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{baseUrl}}/auth/logout"
 					},
 					"response": []
 				}
@@ -211,6 +260,38 @@
 							"urlencoded": []
 						},
 						"url": "{{baseUrl}}/users"
+					},
+					"response": []
+				},
+				{
+					"name": "/info",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "sl-SI",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": "{{baseUrl}}/users/info"
 					},
 					"response": []
 				},
