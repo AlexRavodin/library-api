@@ -5,7 +5,7 @@ import {Book} from "../../orm/entities/books/Book";
 
 export const edit = async (req: Request, res: Response, next: NextFunction) => {
     const id = req.params.id;
-    const {title: newTitle, description: newDescription} = req.body;
+    const {title: newTitle, description: newDescription, authorId: newAuthorId, genreIds: newGenreIds} = req.body;
 
     const bookRepository = getRepository(Book);
     try {
@@ -17,7 +17,7 @@ export const edit = async (req: Request, res: Response, next: NextFunction) => {
         }
 
         book.title = newTitle;
-        book.description = newDescription;
+        book.author.id = newDescription;
 
         try {
             await bookRepository.save(book);

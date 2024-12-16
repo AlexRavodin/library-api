@@ -5,8 +5,8 @@ import {Book} from "../../orm/entities/books/Book";
 
 export const destroy = async (req: Request, res: Response, next: NextFunction) => {
     const id = req.params.id;
-
     const bookRepository = getRepository(Book);
+
     try {
         const book = await bookRepository.findOne({where: {id}});
 

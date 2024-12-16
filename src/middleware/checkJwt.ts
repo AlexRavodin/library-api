@@ -11,7 +11,7 @@ export const checkJwt = (req: Request, res: Response, next: NextFunction) => {
   const token: string | null = req.cookies[CookieKey];
   if (!token) {
     console.log("No token found.");
-    const customError = new CustomError(401, 'Raw', 'Authorization header not provided');
+    const customError = new CustomError(401, 'Raw', 'Token not provided');
     return next(customError);
   }
 
@@ -28,13 +28,13 @@ export const checkJwt = (req: Request, res: Response, next: NextFunction) => {
   }
 
   try {
-    const newToken = createJwtToken(jwtPayload as JwtPayload);
+    /*const newToken = createJwtToken(jwtPayload as JwtPayload);
     console.log(`New token created: ${newToken}`);
     res.cookie('token', newToken, {
       httpOnly: true,
       secure: true,
       sameSite: 'strict',
-    });
+    });*/
     return next();
   } catch (err) {
     console.log('Error creating token.');

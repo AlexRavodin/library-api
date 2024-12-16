@@ -5,6 +5,7 @@ import {Author} from "../../orm/entities/authors/Author";
 
 export const list = async (req: Request, res: Response, next: NextFunction) => {
     const authorRepository = getRepository(Author);
+
     try {
         const books = await authorRepository
             .createQueryBuilder('author')

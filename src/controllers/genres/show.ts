@@ -7,6 +7,7 @@ export const show = async (req: Request, res: Response, next: NextFunction) => {
     const id = req.params.id;
 
     const genreRepository = getRepository(Genre);
+    
     try {
         const book = await genreRepository.findOne(id, {
             select: ['id', 'name', 'description'],

@@ -6,8 +6,8 @@ import { CustomError } from 'utils/response/custom-error/CustomError';
 
 export const register = async (req: Request, res: Response, next: NextFunction) => {
   const { email, password } = req.body;
-
   const userRepository = getRepository(User);
+
   try {
     const user = await userRepository.findOne({ where: { email } });
 

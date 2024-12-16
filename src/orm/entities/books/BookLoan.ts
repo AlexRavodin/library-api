@@ -15,29 +15,11 @@ export class BookLoan {
     user: User;
 
     @Column()
-    booking_start_date: Date;
-
-    @Column()
-    booking_end_date: Date;
-
-    @Column()
     loan_start_date: Date;
 
     @Column()
     loan_end_date: Date;
 
-    isActive(currentDate: Date): boolean {
-        return this.loan_start_date !== null
-            && this.loan_end_date === null
-            && this.loan_start_date <= currentDate
-            && currentDate < this.booking_end_date;
-    }
-
-    isTaken(): boolean {
-        return this.loan_end_date !== null;
-    }
-
-    isOverdue(currentDate: Date): boolean {
-        return this.loan_end_date !== null && this.loan_end_date > currentDate;
-    }
+    @Column()
+    returned: boolean;
 }

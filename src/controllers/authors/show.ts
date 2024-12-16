@@ -7,6 +7,7 @@ export const show = async (req: Request, res: Response, next: NextFunction) => {
     const id = req.params.id;
 
     const authorRepository = getRepository(Author);
+    
     try {
         const author = await authorRepository
             .createQueryBuilder('author')

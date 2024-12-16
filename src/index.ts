@@ -18,6 +18,16 @@ import routes from './routes';
 
 export const app = express();
 app.use(cookieParser());
+
+/*
+const allowedOrigins = ['http://localhost:5173'];
+const corsOptions: cors.CorsOptions = {
+  origin: allowedOrigins,
+  methods: ['POST', 'GET', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+*/
+
 app.use(cors());
 app.use(helmet());
 app.use(bodyParser.json());

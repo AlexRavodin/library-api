@@ -7,6 +7,7 @@ export const destroy = async (req: Request, res: Response, next: NextFunction) =
     const id = req.params.id;
 
     const genreRepository = getRepository(Genre);
+
     try {
         const genre = await genreRepository.findOne({where: {id}});
 

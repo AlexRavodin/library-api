@@ -5,8 +5,8 @@ import {Author} from "../../orm/entities/authors/Author";
 
 export const destroy = async (req: Request, res: Response, next: NextFunction) => {
     const id = req.params.id;
-
     const authorRepository = getRepository(Author);
+
     try {
         const author = await authorRepository.findOne({where: {id}});
 

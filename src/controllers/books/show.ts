@@ -7,12 +7,13 @@ export const show = async (req: Request, res: Response, next: NextFunction) => {
     const id = req.params.id;
 
     const bookRepository = getRepository(Book);
+
     try {
         const book = await bookRepository
             .createQueryBuilder('book')
             .leftJoinAndSelect('book.author', 'author')
             .leftJoinAndSelect('book.genres', 'genres')
-            .where('book.id = :id', { id })
+            .where('book.id = :id', {id})
             .getOne();
 
         if (!book) {

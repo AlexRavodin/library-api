@@ -9,6 +9,7 @@ export const changePassword = async (req: Request, res: Response, next: NextFunc
     const {id, name} = req.jwtPayload;
 
     const userRepository = getRepository(User);
+
     try {
         const user = await userRepository.findOne({where: {id}});
 

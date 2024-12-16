@@ -9,6 +9,6 @@ const router = Router();
 router.post('/login', [validatorLogin], login);
 router.post('/register', [validatorRegister], register);
 router.post('/change-password', [checkJwt, validatorChangePassword], changePassword);
-router.post('/logout', [checkJwt], logout);
+router.post('/logout', [checkJwt, validatorChangePassword], logout);
 
 export default router;

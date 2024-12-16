@@ -8,6 +8,7 @@ export const edit = async (req: Request, res: Response, next: NextFunction) => {
     const {firstName: newFirstName, secondName: newLastName} = req.body;
 
     const authorRepository = getRepository(Author);
+
     try {
         const author = await authorRepository.findOne({where: {id}});
 
